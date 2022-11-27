@@ -7,6 +7,7 @@ var express_1 = __importDefault(require("express"));
 var mongoose_1 = __importDefault(require("mongoose"));
 var book_model_1 = __importDefault(require("./book.model"));
 var body_parser_1 = __importDefault(require("body-parser"));
+var eurekaHelper = require('./eureka-helper');
 var app = (0, express_1["default"])();
 app.use(body_parser_1["default"].json());
 var uri = "mongodb://localhost:27017/biblio";
@@ -88,3 +89,4 @@ app.get("/", function (req, resp) {
 app.listen(8089, function () {
     console.log("server started");
 });
+eurekaHelper.registerWithEureka('meanbook', 8089);

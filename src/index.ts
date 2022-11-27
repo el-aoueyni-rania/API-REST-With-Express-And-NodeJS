@@ -2,7 +2,7 @@ import express, { Request, Response } from 'express';
 import mongoose from "mongoose";
 import Book from "./book.model";
 import bodyParser from "body-parser"
-
+const eurekaHelper = require ('./eureka-helper');
 const app = express();
 app.use(bodyParser.json())
 
@@ -85,3 +85,5 @@ app.get("/", (req, resp) => {
 app.listen(8089, () => {
     console.log("server started")
 });
+
+eurekaHelper.registerWithEureka('meanbook' , 8089);
